@@ -1,0 +1,315 @@
+--  SCRIPT BY REHAN SPAM 👹 
+
+local Players = game:GetService("Players")
+local TextChatService = game:GetService("TextChatService")
+local SoundService = game:GetService("SoundService")
+local TweenService = game:GetService("TweenService")
+
+local player = Players.LocalPlayer
+local enabled = false
+
+--------------------------------------------------
+-- PLAY SOUND ON LOAD
+--------------------------------------------------
+
+task.spawn(function()
+	local sound = Instance.new("Sound")
+	sound.SoundId = "rbxassetid://18667264971"
+	sound.Parent = SoundService
+	sound.Volume = 1
+	sound:Play()
+end)
+
+--------------------------------------------------
+-- MESSAGES
+--------------------------------------------------
+
+local replies = {
+    "TMX MEH REHAN 💀", "AAJ TU NA BACHEGA", "TMX MEH GAJAR 🥕",
+    "TMX MEH TINDA 🍈", "TMX KI KALI () 🤮🤏", "TMX MEH PYAAZ 🧅",
+    "TMX MEH GOBHI 🥦", "TMX MEH NIMBU 🍋", "TMX MEH AAG 🔥", "TMX MEH PAANI 💧", "TMX MEH BARAF ❄️",
+    "TMX MEH DHUA 💨", "TMX MEH BADAL ☁️", "TMX MEH BAARISH 🌧️", "TMX MEH BIJLI ⚡", "TMX MEH SURAJ ☀️",
+    "TMX MEH TARA ⭐", "TMX MEH CHAND 🌙", "TMX MEH AASMAN 🌌", "TMX MEH MITTI 🪨", "TMX MEH PATHAR 🪨",
+    "TMX MEH KANTA 🌵", "TMX MEH PHOOL 🌸", "TMX MEH GHAAS 🌱", "TMX MEH JUNGLE 🌳", "TMX MEH PED 🌲",
+    "TMX MEH LAKDI 🪵", "TMX MEH LOHA ⛓️", "TMX MEH SONA 🏆", "TMX MEH CHANDI 🥈", "TMX MEH HEERA 💎",
+    "TMX MEH KATHI 🪑", "TMX MEH MEZ 🪑", "TMX MEH ALMARI 🗄️", "TMX MEH DABBA 📦", "TMX MEH THAILI 🛍️",
+    "TMX MEH BOTAL 🍼", "TMX MEH GLASS 🥃", "TMX MEH THALI 🍽️", "TMX MEH KATORA 🥣", "TMX MEH CHAMMACH 🥄",
+    "TMX MEH FIRE 🔥","FYTER BNEGA?🤣"," REHAN ON TOP👑","TMX MEH ROCKET 🚀",
+    "TMX MEH ELECTRICITY ⚡","TMX MEH SURF 😆","LEAVE MARDE 🤣","MAX SPAM ON TOP BOL 🔥",
+    "TMX MEH BOOK 📚","PIL GYA ITNI JALDI 🤣","ITNA LALLU FYTER🤧","CVR BYE BACCHA👑", "TMX MEH BATATA 🥔",
+    "TMX MEH MIRCHI 🌶️", "TMX MEH ADRAK 🥔", "TMX MEH LASUN 🧄",
+    "TMX MEH DAHI 🥛", "TMX MEH LASSI 🥛", "TMX MEH KHEER 🥣", "TMX MEH BISCUIT 🍪",
+    "TMX MEH CHAI ☕", "TMX MEH COFFEE ☕", "TMX MEH JUICE 🍹", "TMX MEH SAMOSA 🥟",
+    "TMX MEH PAKORA 🍤", "TMX MEH CHUTNEY 🍯", "TMX MEH ACHAR 🥒", "TMX MEH PAPAD 🥞",
+    "TMX MEH ROTI 🍞", "TMX MEH CHAWAL 🍚", "TMX MEH DAL 🥣", "TMX MEH PANEER 🧀",
+    "TMX MEH PETROLEUM","DFFN?😔","TMX MEH HELICOPTER ","TMX MEH QUANTUM ","TMX MEH ENTROPY ","TMX MEH EVOLUTION ","TMX MEH DNA ","TMX MEH NEURON ","TMX MEH PHOTOSYNTHESIS ","TMX MEH BLACK HOLE",
+    "TMX MEH RELATIVITY ","TMX MEH OXIDATION ","TMX MEH FUSION ","TMX MEH FISSION ","TMX MEH GENETICS ","TMX MEH MITOCHONDRIA ","TMX MEH CELL ","TMX MEH ATOM ",
+    "TMX MEH MOLECULE","TMX MEH PROTON ","TMX MEH NEUTRON ","TMX MEH ELECTRON ","TMX MEH PHOTON ","TMX MEH WAVE FUNCTION ","TMX MEH BIG BANG ","TMX MEH DARK MATTER",
+    "TMX MEH DARK ENERGY","TMX MEH SUPERNOVA","TMX MEH NEUTRON STAR ","TMX MEH QUASAR ","TMX MEH HYPERSONIC ","TMX MEH THERMODYNAMICS ","TMX MEH DOOR ",
+    "TMX MEH HONEY","TMX MEH TOY","TMX MEH AIR","TMX MEH BAG","TMX MEH AIR CONDITIONER",
+    "TMX MEH REMOTE","TMX MEH TABLE ","TMX MEH TV ","TMX MEH CAR","TMX MEH TYRE ","TMX MEH SHOES ","TMX MEH WIFI ","TMX MEH CHASHMA ","TMX MEH EARPHONE ","TMX MEH BALLS OF STEEL ",
+    "TMX MEH DIO","TMX MEH SUZUKI ACCESS 125 ","TMX MEH PERFUME ","TMX MEH SCREEN ","TMX MEH PANIPURI ","TMX MEH PILLOW ","TMX MEH FAN ","TMX MEH BAR ","TMX MEH HOSTEL ","BHAG JA BACHE","TMX MEH DINO ",
+    "TMX MEH MAJDOOR","TMX MEH SCRIPT","TMX MEH TREE🌴","TMX MEH CLIP",
+    "TMX ALLU","TMX MEH GOAT","TMX MEH BLAZE","TMX MEH SALT",
+    "TMX MEH ROD","TMX MEH UNIVERSE","TMX MEH SOFA",
+    "TMX MEH KEYBOARD","TMX MEH SNIPER","REHAN SPAM ON TOP👑", "TMX MEH CHUHA 🐀", "TMX MEH BILLI 🐈", "TMX MEH KUTTA 🐕", "TMX MEH GADHA 🫏",
+    "TMX MEH SUAR 🐖", "TMX MEH MENDAK 🐸", "TMX MEH SAANP 🐍", "TMX MEH CHIPKALI 🦎",
+    "TMX MEH MACHAR 🦟", "TMX MEH MAKKHI 🪰", "TMX MEH COCKROACH 🪳", "TMX MEH BANDAR 🐒",
+    "TMX MEH BHALU 🐻", "TMX MEH SHER 🦁", "TMX MEH HATHI 🐘", "TMX MEH OONT 🐪",
+    "TMX MEH BAKRI 🐐", "TMX MEH MURGA 🐓", "TMX MEH BATTAKH 🦆", "TMX MEH TOTA 🦜",
+    "TMX MEH MONITOR","TMX MEH TABLE","TMX MEH GALAXLY",
+    "TMX MEH MUSHROOM","TMX MEH STONE","TMX MEH BOT",
+    "TMX MEH TAB","TMX MEH CYLINDER","TMX MEH KING",
+    "TMX MEH VOID","TMX MEH REAPER","TMX MEH GOD",
+    "TMX MEH MASTER","TMX MEH SCREEN 👻","TMX MEH PANIPURI 👾","TMX MEH BEAST",
+    "TMX MEH LEGEND","TMX MEH GHOST","TMX MEH NINJA",
+    "TMX MEH STAR","TMX MEH MOON","TMX MEH NEON",
+    "TMX MEH OMEGA","TMX MEH STICK","TMX MEH PAPER",
+    "TMX MEH STYLE","TMX MEH MAX SPAM","TMX MEH FISH",
+    "TMX MEH VENOM","TMX MEH CHAOS","TMX MEH BUILDING",
+    "USE REHAN SPAMMER😈", "TMX MEH JHADOO 🧹", "TMX MEH POCHA 🧼", "TMX MEH SABUN 🧼", "TMX MEH BUCKET 🪣",
+    "TMX MEH LIGHT 💡", "TMX MEH FAN 🌀", "TMX MEH AC ❄️", "TMX MEH HEATER 🔥",
+    "TMX MEH SWITCH 🔘", "TMX MEH WIRE 🔌", "TMX MEH BATTERY 🔋", "TMX MEH REMOTE 📺",
+    "TMX MEH PHONE 📱", "TMX MEH LAPTOP 💻", "TMX MEH MOUSE 🖱️", "TMX MEH KEYBOARD ⌨️",
+    "TMX MEH MIC 🎙️", "TMX MEH SPEAKER 📢", "TMX MEH CAMERA 📷", "TMX MEH LENS 🔭",
+    "TMX MEH PAPER 📄", "TMX MEH PEN 🖊️", "TMX MEH PENCIL ✏️", "TMX MEH ERASER 🧼",
+    "TMX MEH SCALE 📏", "TMX MEH COMPASS 🧭", "TMX MEH BAG 🎒", "TMX MEH BOTTLE 🍼",
+    "TMX MEH SPOON 🥄", "TMX MEH PLATE 🍽️", "TMX MEH GLASS 🥃", "TMX MEH JUG 🏺",
+    "TMX MEH TABLE 🪑", "TMX MEH CHAIR 🪑", "TMX MEH BED 🛏️", "TMX MEH PILLOW ☁️",
+    "TMX MEH BLANKET 🛌", "TMX MEH CURTAIN 🎞️", "TMX MEH WINDOW 🪟", "TMX MEH DOOR 🚪",
+    "TMX MEH WALL 🧱", "TMX MEH FLOOR 🧱", "TMX MEH ROOF 🏠", "TMX MEH GATE ⛩️",
+    "TMX MEH ROAD 🛣️", "TMX MEH STREET 🏘️", "TMX MEH GALI 🏙️", "TMX MEH CHOWK ⛲",
+    "TMX MEH PARK 🌳", "TMX MEH TREE 🌴", "TMX MEH FLOWER 🌸", "TMX MEH GRASS 🌱",
+    "TMX MEH CLOUD ☁️", "TMX MEH RAIN 🌧️", "TMX MEH SUN ☀️", "TMX MEH STAR ⭐",
+    "TMX MEH SKY 🌌", "TMX MEH EARTH 🌍", "TMX MEH MARS 🔴", "TMX MEH JUPITER 🪐",
+    "TMX MEH BICYCLE 🚲", "TMX MEH BIKE 🏍️", "TMX MEH CAR 🚗", "TMX MEH BUS 🚌",
+    "TMX MEH TRUCK 🚚", "TMX MEH PLANE ✈️", "TMX MEH SHIP 🚢", "TMX MEH BOAT 🚤",
+    "TMX MEH CYCLE 🚲", "TMX MEH RICKSHAW 🛺", "TMX MEH AUTO 🛺", "TMX MEH TAXI 🚕",
+    "TMX MEH HELMET 🪖", "TMX MEH ENGINE ⚙️", "TMX MEH WHEEL 🎡", "TMX MEH HORN 📢",
+    "TMX MEH BRAKE 🛑", "TMX MEH CLUTCH ⚙️", "TMX MEH GEAR ⚙️", "TMX MEH FUEL ⛽",
+    "TMX MEH PETROL ⛽", "TMX MEH DIESEL ⛽", "TMX MEH OIL 🛢️", "TMX MEH AIR 💨",
+    "TMX MEH DUST 💨", "TMX MEH SMOKE 🚬", "TMX MEH FIRE 🔥", "TMX MEH WATER 💧",
+    "TMX MEH ICE ❄️", "TMX MEH STEAM 💨", "TMX MEH GAS 💨", "TMX MEH MUD 💩",
+    "TMX MEH STONE 🪨", "TMX MEH SAND 🏖️", "TMX MEH GOLD 🏆", "TMX MEH SILVER 🥈",
+    "TMX MEH IRON ⛓️", "TMX MEH PLASTIC 🧴", "TMX MEH GLASS 🥛", "TMX MEH WOOD 🪵",
+    "TMX MEH COAL ⬛", "TMX MEH DIAMOND 💎", "TMX MEH PEARL ⚪", "TMX MEH RUBY 🔴",
+    "TMX MEH EMERALD 🟢", "TMX MEH SAPPHIRE 🔵", "TMX MEH CRYSTAL 🔮", "TMX MEH MAGNET 🧲",
+    "TMX MEH MIRROR 🪞", "TMX MEH LENS 🔭", "TMX MEH PRISM 🌈", "TMX MEH SHADOW 👤",
+    "TMX MEH ECHO 📢", "TMX MEH SOUND 🎵", "TMX MEH WAVE 🌊", "TMX MEH PULSE 💓"
+}
+
+--------------------------------------------------
+-- SEND MESSAGE
+--------------------------------------------------
+
+local function send(msg)
+	local channel = TextChatService.TextChannels.RBXGeneral
+	if channel then
+		channel:SendAsync(msg)
+	end
+end
+
+--------------------------------------------------
+-- LOADED MESSAGE
+--------------------------------------------------
+
+task.spawn(function()
+	local line = string.rep("_", 150)
+	send(line .. "[ 👹 REHAN SPAM LOADED... ]")
+end)
+
+--------------------------------------------------
+-- GUI CREATION
+--------------------------------------------------
+
+local gui = Instance.new("ScreenGui")
+gui.Parent = player.PlayerGui
+gui.ResetOnSpawn = false
+
+-- MAIN PANEL
+local frame = Instance.new("Frame")
+frame.Parent = gui
+frame.Size = UDim2.new(0, 300, 0, 280)
+frame.Position = UDim2.new(0.5, -150, 0.5, -140)
+frame.BackgroundColor3 = Color3.fromRGB(30, 10, 10)
+frame.Visible = false
+frame.Active = true
+frame.Draggable = true
+frame.ClipsDescendants = true
+frame.BackgroundTransparency = 1
+Instance.new("UICorner", frame).CornerRadius = UDim.new(0, 12)
+
+-- GLOW / STROKE
+local stroke = Instance.new("UIStroke")
+stroke.Parent = frame
+stroke.Thickness = 2.5
+stroke.Color = Color3.fromRGB(235, 30, 30)
+
+-- TITLE
+local title = Instance.new("TextLabel")
+title.Parent = frame
+title.Size = UDim2.new(1, 0, 0, 35)
+title.BackgroundColor3 = Color3.fromRGB(60, 15, 15)
+title.Text = "REHAN SARKAR SPAM 💀"
+title.TextColor3 = Color3.fromRGB(255, 255, 255)
+title.Font = Enum.Font.GothamBold
+title.TextSize = 18
+Instance.new("UICorner", title)
+
+-- INPUTS
+local function createInput(pos, placeholder)
+	local box = Instance.new("TextBox")
+	box.Parent = frame
+	box.Size = UDim2.new(0, 250, 0, 35)
+	box.Position = pos
+	box.PlaceholderText = placeholder
+	box.BackgroundColor3 = Color3.fromRGB(45, 15, 15)
+	box.TextColor3 = Color3.fromRGB(255, 255, 255)
+	box.PlaceholderColor3 = Color3.fromRGB(180, 120, 120)
+	box.Font = Enum.Font.Gotham
+	Instance.new("UICorner", box).CornerRadius = UDim.new(0, 8)
+	return box
+end
+
+local nameBox = createInput(UDim2.new(0, 25, 0, 50), "Enter Name...")
+local delayBox = createInput(UDim2.new(0, 25, 0, 95), "Delay seconds...")
+local lineBox = createInput(UDim2.new(0, 25, 0, 140), "Line Style (_ @ # + ~)")
+
+-- BUTTONS
+local start = Instance.new("TextButton")
+start.Parent = frame
+start.Size = UDim2.new(0, 110, 0, 40)
+start.Position = UDim2.new(0, 25, 0, 190)
+start.Text = "START"
+start.Font = Enum.Font.GothamBold
+start.BackgroundColor3 = Color3.fromRGB(180, 20, 20)
+start.TextColor3 = Color3.new(1, 1, 1)
+Instance.new("UICorner", start).CornerRadius = UDim.new(0, 8)
+
+local stop = Instance.new("TextButton")
+stop.Parent = frame
+stop.Size = UDim2.new(0, 110, 0, 40)
+stop.Position = UDim2.new(0, 165, 0, 190)
+stop.Text = "OFF"
+stop.Font = Enum.Font.GothamBold
+stop.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+stop.TextColor3 = Color3.new(1, 1, 1)
+Instance.new("UICorner", stop).CornerRadius = UDim.new(0, 8)
+
+-- CREDITS
+local credits = Instance.new("TextLabel")
+credits.Parent = frame
+credits.Size = UDim2.new(1, 0, 0, 20)
+credits.Position = UDim2.new(0, 0, 1, -22)
+credits.BackgroundTransparency = 1
+credits.Text = "👹 REHAN SPAM 👹"
+credits.TextColor3 = Color3.fromRGB(255, 50, 50)
+credits.Font = Enum.Font.GothamBold
+credits.TextScaled = true
+
+--------------------------------------------------
+-- FLOATING TOGGLE IMAGE BUTTON
+--------------------------------------------------
+
+local float = Instance.new("ImageButton")
+float.Parent = gui
+float.Size = UDim2.new(0, 0, 0, 0)
+float.Position = UDim2.new(0, 120, 0, 220)
+float.Image = "rbxassetid://4840594892"
+float.BackgroundColor3 = Color3.fromRGB(150, 0, 0)
+float.Active = true
+float.Draggable = true
+
+local floatCorner = Instance.new("UICorner")
+floatCorner.Parent = float
+floatCorner.CornerRadius = UDim.new(1, 0)
+
+local floatStroke = Instance.new("UIStroke")
+floatStroke.Parent = float
+floatStroke.Thickness = 2
+floatStroke.Color = Color3.fromRGB(255, 50, 50)
+
+--------------------------------------------------
+-- ANIMATIONS
+--------------------------------------------------
+
+local tweenInfo = TweenInfo.new(0.4, Enum.EasingStyle.Back, Enum.EasingDirection.Out)
+
+TweenService:Create(float, tweenInfo, {Size = UDim2.new(0, 60, 0, 60)}):Play()
+
+local isOpening = false
+local function toggleUI()
+	if isOpening then return end
+	isOpening = true
+
+	if not frame.Visible then
+		frame.Visible = true
+		frame.Size = UDim2.new(0, 0, 0, 0)
+		frame.Position = UDim2.new(0.5, 0, 0.5, 0)
+		frame.BackgroundTransparency = 0
+		
+		local openTween = TweenService:Create(frame, tweenInfo, {
+			Size = UDim2.new(0, 300, 0, 280),
+			Position = UDim2.new(0.5, -150, 0.5, -140)
+		})
+		openTween:Play()
+		openTween.Completed:Wait()
+	else
+		local closeTween = TweenService:Create(frame, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {
+			Size = UDim2.new(0, 0, 0, 0),
+			Position = UDim2.new(0.5, 0, 0.5, 0)
+		})
+		closeTween:Play()
+		closeTween.Completed:Wait()
+		frame.Visible = false
+	end
+	
+	isOpening = false
+end
+
+float.MouseButton1Click:Connect(toggleUI)
+
+--------------------------------------------------
+-- SPAM SYSTEM
+--------------------------------------------------
+
+start.MouseButton1Click:Connect(function()
+	local target = nameBox.Text
+	local delay = tonumber(delayBox.Text) or 2
+	local style = lineBox.Text ~= "" and lineBox.Text or "@"
+
+	if target == "" then return end
+
+	enabled = false
+	task.wait(0.1)
+	enabled = true
+
+	task.spawn(function()
+		while enabled do
+			for _, msg in pairs(replies) do
+				if not enabled then break end
+
+				local fixedPrefix = "SCRIPT BY REHAN SPAM 👹"
+				local taggedTarget = "[" .. target .. "]"
+
+				local baseText = fixedPrefix .. " " .. taggedTarget .. " " .. msg
+				local totalLength = 190
+
+				local remaining = totalLength - string.len(baseText)
+				if remaining < 5 then
+					remaining = 5
+				end
+
+				local line = string.rep(style, remaining)
+				local finalMsg = fixedPrefix .. " " .. line .. " " .. taggedTarget .. " " .. msg
+
+				send(finalMsg)
+				task.wait(delay)
+			end
+		end
+	end)
+end)
+
+stop.MouseButton1Click:Connect(function()
+	enabled = false
+end)
